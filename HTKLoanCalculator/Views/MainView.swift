@@ -81,7 +81,7 @@ struct MainView: View {
 //                    Text($0)
 //                }
 //                .navigationBarTitle(Text("Today's Flavors"))
-                LoanView()
+                LoanView(viewModel: MainViewModel())
             }
         case .map:
             Text("m")
