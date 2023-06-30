@@ -48,7 +48,7 @@ struct LoanView: View {
                         TextField("Input money", text: $viewModel.loanAmount , onEditingChanged: { _ in
                             print("$0onEditingChanged")
                             showShortcutView = true
-                            //                        viewModel.onChangeLoanAmount()
+
                         }, onCommit: {
                             print("onCommit")
                             
@@ -56,8 +56,6 @@ struct LoanView: View {
                             print("textFieldStyle onAppear")
                         }
                         
-                        //                    if (showShortcutView) {
-                        //                        showShortcutView = false
                         HStack {
                             Spacer()
                             Picker("shortcut money", selection: $shortcutMoneySegment) {
@@ -66,7 +64,6 @@ struct LoanView: View {
                                 Text(".000.000.000")
                             }.pickerStyle(.segmented)
                         }
-                        //                    }
                         
                     }.padding([.leading, .trailing])
                     

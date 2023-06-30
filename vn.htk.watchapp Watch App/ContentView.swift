@@ -8,17 +8,25 @@
 import SwiftUI
 
 struct ContentView: View {
+    var quote: String {
+        return ContentViewModel.quote?.words ?? "Something like that."
+    }
+    
+    var author: String {
+        return "--" + (ContentViewModel.quote?.author ?? "Noname")
+    }
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!").onTapGesture {
-                
-            }
-            
+        NavigationView {
+            ScrollView {
+                VStack {
+                    
+                    Text(quote).font(.title).foregroundColor(.red).bold().lineLimit(nil)
+                    Text(author).font(.caption).foregroundColor(.white)
+                }.padding()
+            }.navigationTitle("Have a good day!")
         }
-        .padding()
+        
     }
 }
 
