@@ -10,13 +10,14 @@ import SwiftUI
 struct LoanView: View {
     
     @State var loanValue: String = ""
-    @State var termSelect: Int = 0
+    
     //    @State var termType: Int = 1
     @State var presentingModal: Bool = false
-    @State var shortcutMoneySegment: Int = 0
+    
     @State var showShortcutView: Bool = false
     
-    ////
+    
+    //// MARK: observed object
     @ObservedObject var viewModel: MainViewModel
     
     var body: some View {
@@ -24,22 +25,24 @@ struct LoanView: View {
             ScrollView {
                 VStack(alignment: .center) {
                     /// region one
-                    HStack(alignment: .center, spacing: 33) {
-                        CircularProgressView(percentage: self.$viewModel.__percentage).frame(width: 100
-                                                                                             , height: 100).background(Color.clear)
-                        
-                        VStack(alignment: .leading) {
-                            Text("").padding( )
-                            Text("Paid off").font(.headline).padding(4).foregroundColor(Color.white).background(Color.blue).cornerRadius(4)
-                            Text("\(self.viewModel.__totalPaid) VND").font(.body)
-                            Divider()
-                            Text("Total interest").font(.headline).padding(4).foregroundColor(Color.white).background(Color.blue).cornerRadius(4)
-                            Text("\(self.viewModel.__totalPaid) VND").font(.body)
-                            Divider()
-                            Text("Monthly paid").font(.headline).padding(4).foregroundColor(Color.white).background(Color.blue).cornerRadius(4)
-                            Text("\(self.viewModel.__monthlyPaid) VND").font(.body)
-                        }
-                    }.padding(.all)
+                    if (viewModel.showCircleView) {
+                        HStack(alignment: .center, spacing: 33) {
+                            
+                            CircularProgressView(viewModel: CircularProgressViewModel(paidOffTotal: self.viewModel.__totalPaid, amountLoan: self.viewModel.__loanAmount)).frame(width: 100
+                                                                                                 , height: 100).background(Color.clear)
+                            
+                            VStack(alignment: .leading) {
+                                Text("Paid off").font(.caption).padding(4).foregroundColor(Color.white).background(Color.blue).cornerRadius(4)
+                                Text("\(self.viewModel.__totalPaid) $").font(.body)
+                                Text("Total interest").font(.caption).padding(4).foregroundColor(Color.white).background(Color.blue).cornerRadius(4)
+                                Text("\(self.viewModel.__totalPaid) $").font(.body)
+                                Divider()
+                                Text("Monthly paid").font(.caption).padding(4).foregroundColor(Color.white).background(Color.blue).cornerRadius(4)
+                                Text("\(self.viewModel.__monthlyPaid) $").font(.body)
+                            }
+                        }.padding(.all)
+                    }
+                    
                     
                     /// region two
                     VStack(alignment: .leading, spacing: 10) {
@@ -54,14 +57,16 @@ struct LoanView: View {
                             
                         }).textFieldStyle(.roundedBorder).onAppear {
                             print("textFieldStyle onAppear")
-                        }
+                        }.keyboardType(.numberPad)
                         
                         HStack {
                             Spacer()
-                            Picker("shortcut money", selection: $shortcutMoneySegment) {
-                                Text(".000")
-                                Text(".000.000")
-                                Text(".000.000.000")
+                            
+                            Picker("shortcut money", selection: self.$viewModel.shortInputMoneySegment) {
+                                Text(".000").tag(0)
+                                Text(".000.000").tag(1)
+                                Text(".000.000.000").tag(2)
+                                Text("Clear").font(.caption).foregroundColor(.red).tag(3)
                             }.pickerStyle(.segmented)
                         }
                         
@@ -76,9 +81,9 @@ struct LoanView: View {
                                 print("$0onEditingChanged")
                             }, onCommit: {
                                 print("onCommit")
-                            }).textFieldStyle(.roundedBorder)
+                            }).textFieldStyle(.roundedBorder).keyboardType(.numberPad)
                             
-                            Picker("What is your term?", selection: $termSelect) {
+                            Picker("What is your term?", selection: self.$viewModel.termSelect) {
                                 Text("years").tag(0)
                                 Text("months").tag(1)
                             }.pickerStyle(.segmented)
@@ -96,7 +101,7 @@ struct LoanView: View {
                                 print("$0onEditingChanged")
                             }, onCommit: {
                                 print("onCommit")
-                            }).textFieldStyle(.roundedBorder)
+                            }).textFieldStyle(.roundedBorder).keyboardType(.numberPad)
                             
                             Label("%", image: "")
                             
@@ -116,8 +121,10 @@ struct LoanView: View {
                             }.sheet(isPresented: $presentingModal) {
                                 NavigationLink(destination: DetailView()) {
                                     //                                Text(Constants.flatRateText).foregroundColor(.black).font(.headline)
-                                    TextView(text: self.$viewModel.textDescriptionMethod).frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                                }
+                                    TextView(text: self.$viewModel.textDescriptionMethod).frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity).font(.custom(
+                                        "AmericanTypewriter",
+                                        fixedSize: 36))
+                                }.navigationBarTitle("Description method")
                             }
                             
                         }
@@ -138,7 +145,7 @@ struct LoanView: View {
                         
                     }
                 
-                }.navigationTitle("HTK Calculator").background(Color.white)
+                }.navigationTitle("HTK Loan Calculator").background(Color.white)
             }
             
         }
@@ -152,15 +159,17 @@ struct LoanView: View {
 //}
 
 struct CircularProgressView: View {
-    @Binding var percentage: Double
+//    @Binding var percentage: Double
+    
+    @ObservedObject var viewModel: CircularProgressViewModel
     
     var body: some View {
         GeometryReader { geo in
-            Text("\(percentage)%").frame(width: geo.size.width, height: geo.size.height, alignment: .center)
+            Text("\(viewModel.percentage) %").frame(width: geo.size.width, height: geo.size.height, alignment: .center)
                 .overlay(
                     ZStack {
-                    Circle().stroke(Color.pink.opacity(0.5), lineWidth: 20).background(Color.clear)
-                    Circle().trim(from: 0, to: 0.25).stroke(Color.pink, style: StrokeStyle(lineWidth: 20, lineCap: .round)).rotationEffect(.degrees(-90))//.background(Color.pink)
+                    Circle().stroke(Color.pink.opacity(0.5), lineWidth: 10).background(Color.clear)
+                    Circle().trim(from: 0, to: 0.1).stroke(Color.pink, style: StrokeStyle(lineWidth: 10, lineCap: .round)).rotationEffect(.degrees(-90))//.background(Color.pink)
                     }
                 )
             
@@ -168,6 +177,21 @@ struct CircularProgressView: View {
         
     }
     
+}
+
+class CircularProgressViewModel: ObservableObject {
+    @State var paidOffTotal: Double
+    
+    @State var amountLoan: Int
+    
+    @Published var percentage: Double
+    
+    init(paidOffTotal: Double, amountLoan: Int) {
+        self.paidOffTotal = paidOffTotal
+        self.amountLoan = amountLoan
+        
+        self.percentage = Double(amountLoan)/paidOffTotal*100
+    }
 }
 
 struct TextView: UIViewRepresentable {
