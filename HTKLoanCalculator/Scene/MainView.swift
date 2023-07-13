@@ -49,6 +49,8 @@ struct MainView: View {
                             .padding(.top, 10)
                         Text("Todo").font(.footnote).padding(.bottom)
                         Spacer()
+                    }.onTapGesture {
+                        tabbarRouter.currentPage = .plus
                     }
                     
                     VStack {
@@ -57,6 +59,8 @@ struct MainView: View {
                             .padding(.top, 10)
                         Text("Videos").font(.footnote).padding(.bottom)
                         Spacer()
+                    }.onTapGesture {
+                        tabbarRouter.currentPage = .videos
                     }
                     
                     VStack {
@@ -65,7 +69,10 @@ struct MainView: View {
                             .padding(.top, 10)
                         Text("Profile").font(.footnote).padding(.bottom)
                         Spacer()
+                    }.onTapGesture {
+                        tabbarRouter.currentPage = .profile
                     }
+                    
                 }.frame(width: geometry.size.width, height: geometry.size.height/8).background(Color.blue.shadow(radius: 2))
             }
             
@@ -80,13 +87,13 @@ struct MainView: View {
                 LoanView(viewModel: MainViewModel())
             }
         case .map:
-            Text("m")
+            MapView().background(Color.purple)
         case .plus:
-            Text("h")
+            TodoView().background(.pink)
         case .videos:
-            Text("h")
+            VideoView().background(.green)
         case .profile:
-            Text("h")
+            ProfileView().background(.yellow)
         }
     }
     

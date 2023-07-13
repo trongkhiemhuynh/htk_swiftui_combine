@@ -21,15 +21,16 @@ struct LoanView: View {
     @ObservedObject var viewModel: MainViewModel
     
     var body: some View {
-        NavigationStack {
+//        NavigationStack {
             ScrollView {
                 VStack(alignment: .center) {
                     /// region one
                     if (viewModel.showCircleView) {
                         HStack(alignment: .center, spacing: 33) {
                             
-                            CircularProgressView(viewModel: CircularProgressViewModel(paidOffTotal: self.viewModel.__totalPaid, amountLoan: self.viewModel.__loanAmount)).frame(width: 100
-                                                                                                 , height: 100).background(Color.clear)
+                            CircularProgressView(viewModel: CircularProgressViewModel(paidOffTotal: self.viewModel.__totalPaid, amountLoan: self.viewModel.__loanAmount))
+                                .frame(width: 100, height: 100)
+                                .background(Color.red)
                             
                             VStack(alignment: .leading) {
                                 Text("Paid off").font(.caption).padding(4).foregroundColor(Color.white).background(Color.blue).cornerRadius(4)
@@ -145,10 +146,10 @@ struct LoanView: View {
                         
                     }
                 
-                }.navigationTitle("HTK Loan Calculator").background(Color.white)
+                }.navigationTitle("Loan Calculator").background(Color.white)
             }
             
-        }
+//        }
     }
 }
 
