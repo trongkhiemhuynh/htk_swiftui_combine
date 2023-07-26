@@ -12,25 +12,28 @@ struct LoginView: View {
     @ObservedObject var viewModel: LoginViewModel = LoginViewModel()
     
     var body: some View {
-        NavigationView {
-            VStack(alignment: .center, spacing: 23) {
-                Text("Hello, \(viewModel.tfUsername)")
-                
-                Image(systemName: "number.circle.fill")
-                
-                TextField("username", text: self.$viewModel.tfUsername).textFieldStyle(.roundedBorder).padding([.leading, .trailing])
-                SecureField("password", text: self.$viewModel.tfPassword).textFieldStyle(.roundedBorder).padding([.leading, .trailing])
-                
-                NavigationLink(destination: MainView(tabbarRouter: TabBarRouter()), isActive: self.$viewModel.isResolve, label: {
-                    Button("LOGIN") {
-                        self.viewModel.onRequestLogin()
-                    }
+        LoadingView(isShowing: .constant(self.viewModel.isLoading)) {
+            NavigationView {
+                VStack(alignment: .center, spacing: 23) {
+                    Text("Hello, \(viewModel.tfUsername)")
                     
-                })
-                
-                Spacer()
-                
-            }.background(Color.red)
+                    Image(systemName: "number.circle.fill")
+                    
+                    TextField("username", text: self.$viewModel.tfUsername).textFieldStyle(.roundedBorder).padding([.leading, .trailing])
+                    SecureField("password", text: self.$viewModel.tfPassword).textFieldStyle(.roundedBorder).padding([.leading, .trailing])
+                    
+                    NavigationLink(destination: MainView(tabbarRouter: TabBarRouter()), isActive: self.$viewModel.isResolve, label: {
+                        Button("LOGIN") {
+                            
+                            self.viewModel.onRequestLogin()
+                        }
+                        
+                    })
+                    
+                    Spacer()
+                    
+                }.background(Color.red)
+            }
         }
         
     }

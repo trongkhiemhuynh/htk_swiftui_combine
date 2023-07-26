@@ -24,6 +24,7 @@
 		31BE702F2A70CDAE0068AE25 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BE702E2A70CDAE0068AE25 /* CircularProgressView.swift */; };
 		31BE70322A70D6350068AE25 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BE70312A70D6350068AE25 /* LoginView.swift */; };
 		31BE70342A70D6480068AE25 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BE70332A70D6480068AE25 /* LoginViewModel.swift */; };
+		31BE70362A71273D0068AE25 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BE70352A71273D0068AE25 /* LoadingView.swift */; };
 		31BFA6902A43F951009DD72F /* LoanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BFA68F2A43F951009DD72F /* LoanViewModel.swift */; };
 		31BFA6922A43FA15009DD72F /* LoanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BFA6912A43FA15009DD72F /* LoanView.swift */; };
 		31D3B6732A31912300FC4FF7 /* MapSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D3B6722A31912300FC4FF7 /* MapSwiftUIView.swift */; };
@@ -107,6 +108,7 @@
 		31BE702E2A70CDAE0068AE25 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		31BE70312A70D6350068AE25 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		31BE70332A70D6480068AE25 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		31BE70352A71273D0068AE25 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		31BFA68F2A43F951009DD72F /* LoanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanViewModel.swift; sourceTree = "<group>"; };
 		31BFA6912A43FA15009DD72F /* LoanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanView.swift; sourceTree = "<group>"; };
 		31D3B6722A31912300FC4FF7 /* MapSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSwiftUIView.swift; sourceTree = "<group>"; };
@@ -309,6 +311,7 @@
 			children = (
 				31BE70312A70D6350068AE25 /* LoginView.swift */,
 				31BE70332A70D6480068AE25 /* LoginViewModel.swift */,
+				31BE70352A71273D0068AE25 /* LoadingView.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -592,6 +595,7 @@
 				31F8C5432A55104E00D58181 /* MapView.swift in Sources */,
 				31F8C5452A55106800D58181 /* TodoView.swift in Sources */,
 				317C740A2A1C949300734729 /* DetailView.swift in Sources */,
+				31BE70362A71273D0068AE25 /* LoadingView.swift in Sources */,
 				31BFA6922A43FA15009DD72F /* LoanView.swift in Sources */,
 				31D3B6732A31912300FC4FF7 /* MapSwiftUIView.swift in Sources */,
 				317C73E32A1C697E00734729 /* HTKLoanCalculator.xcdatamodeld in Sources */,

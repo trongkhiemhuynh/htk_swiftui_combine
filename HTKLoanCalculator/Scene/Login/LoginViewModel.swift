@@ -11,6 +11,7 @@ class LoginViewModel: ObservableObject {
     @Published var tfUsername: String = "anonymous"
     @Published var tfPassword: String = ""
     @Published var isResolve: Bool = false
+    @Published var isLoading: Bool = false
     
     init() {
         
@@ -18,12 +19,28 @@ class LoginViewModel: ObservableObject {
     
     func onRequestLogin() {
         print("OOOOOO")
-        if (tfUsername == "dragon" && tfPassword == "abc123456") {
-            print("success")
-            self.isResolve = true
-        } else {
-            self.isResolve = false
-            print("failed")
+        self.isLoading = true
+        self.someAsyncronousTask { value in
+            self.isResolve = value
+            
+            self.isLoading = false
+        }
+        
+//        if (tfUsername == "dragon" && tfPassword == "abc123456") {
+//            print("success")
+//            self.isResolve = true
+//        } else {
+//            self.isResolve = false
+//            print("failed")
+//        }
+        
+    }
+    
+    private func someAsyncronousTask(completion: @escaping (Bool) -> Void) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [self] in
+            // Waited 3 seconds to simulate something like URLSession request
+            let checked = self.tfUsername == "dragon" && self.tfPassword == "abc123456"
+            completion(checked)
         }
     }
 }

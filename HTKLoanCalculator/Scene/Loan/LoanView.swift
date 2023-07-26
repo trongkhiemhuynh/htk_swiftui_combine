@@ -101,7 +101,7 @@ struct LoanView: View {
                             print("onCommit")
                         }).textFieldStyle(.roundedBorder).keyboardType(.numberPad)
                         
-                        Label("%", image: "")
+                        Text("%")
                         
                     }
                     
