@@ -24,10 +24,10 @@ struct LoanView: View {
             VStack(alignment: .center) {
                 /// region one
                 HStack(alignment: .center, spacing: 33) {
-                    
                     CircularProgressView(viewModel: CircularProgressViewModel(percentage: self.viewModel.percentage))
-                        .frame(width: 100, height: 100)
-                        .background(Color.red)
+//                        .frame(width: 100, height: 100)
+                        .padding(.all)
+//                        .background(Color.yellow)
                     
                     VStack(alignment: .leading) {
                         Text("Paid off").font(.caption).padding(4).foregroundColor(Color.white).background(Color.blue).cornerRadius(4)
@@ -38,7 +38,9 @@ struct LoanView: View {
                         Text("Monthly paid").font(.caption).padding(4).foregroundColor(Color.white).background(Color.blue).cornerRadius(4)
                         Text("\(self.viewModel.monthlyPaid) $").font(.body)
                     }
-                }.padding(.all)
+//                    .background(Color.blue)
+                }
+//                .background(Color.brown)
 
                 /// region two
                 VStack(alignment: .leading, spacing: 10) {
@@ -145,36 +147,8 @@ struct LoanView: View {
                     
                 }
                 
-            }.navigationTitle("Loan Calculator").background(Color.white)
+            }.navigationTitle("Calculator Machine").background(Color.white)
         }
-    }
-}
-
-struct CircularProgressView: View {
-    //    @Binding var percentage: Double
-    
-    @ObservedObject var viewModel: CircularProgressViewModel
-    
-    var body: some View {
-        GeometryReader { geo in
-            Text("\(viewModel.percentage) %").frame(width: geo.size.width, height: geo.size.height, alignment: .center)
-                .overlay(
-                    ZStack {
-                        Circle().stroke(Color.pink.opacity(0.5), lineWidth: 10).background(Color.clear)
-                        Circle().trim(from: 0, to: viewModel.percentage / 100).stroke(Color.pink, style: StrokeStyle(lineWidth: 10, lineCap: .round)).rotationEffect(.degrees(-90))//.background(Color.pink)
-                    }
-                )
-        }
-        
-    }
-    
-}
-
-class CircularProgressViewModel: ObservableObject {
-                                
-    @Published var percentage: Double
-    init(percentage: Double) {
-        self.percentage = percentage
     }
 }
 

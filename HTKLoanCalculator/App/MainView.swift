@@ -20,9 +20,8 @@ struct MainView: View {
                     VStack {
                         Image(systemName: "homekit").resizable().aspectRatio(contentMode: .fit)
                             .frame(width: geometry.size.width/5, height: 30)
-                            .padding([.top], 10)
-                        Text("Home").font(.footnote).padding(.bottom)
-                        Spacer()
+                            .padding(.top, 4)
+                        Text("Home").font(.footnote).padding(.bottom, 4)
                     }.onTapGesture {
                         tabbarRouter.currentPage = .home
                     }
@@ -30,9 +29,8 @@ struct MainView: View {
                     VStack {
                         Image(systemName: "map.fill").resizable().aspectRatio(contentMode: .fit)
                             .frame(width: geometry.size.width/5, height: 33)
-                            .padding(.top, 10)
-                        Text("Map").font(.footnote).padding(.bottom)
-                        Spacer()
+                            .padding(.top, 4)
+                        Text("Map").font(.footnote).padding(.bottom, 4)
                     }.onTapGesture {
                         tabbarRouter.currentPage = .map
                     }
@@ -40,9 +38,8 @@ struct MainView: View {
                     VStack {
                         Image(systemName: "plus").resizable().aspectRatio(contentMode: .fit)
                             .frame(width: geometry.size.width/5, height: 33)
-                            .padding(.top, 10)
-                        Text("Todo").font(.footnote).padding(.bottom)
-                        Spacer()
+                            .padding(.top, 4)
+                        Text("Todo").font(.footnote).padding(.bottom, 4)
                     }.onTapGesture {
                         tabbarRouter.currentPage = .plus
                     }
@@ -50,9 +47,8 @@ struct MainView: View {
                     VStack {
                         Image(systemName: "video.circle.fill").resizable().aspectRatio(contentMode: .fit)
                             .frame(width: geometry.size.width/5, height: 33)
-                            .padding(.top, 10)
-                        Text("Videos").font(.footnote).padding(.bottom)
-                        Spacer()
+                            .padding(.top, 4)
+                        Text("Videos").font(.footnote).padding(.bottom, 4)
                     }.onTapGesture {
                         tabbarRouter.currentPage = .videos
                     }
@@ -60,18 +56,16 @@ struct MainView: View {
                     VStack {
                         Image(systemName: "person.crop.circle").resizable().aspectRatio(contentMode: .fit)
                             .frame(width: geometry.size.width/5, height: 33)
-                            .padding(.top, 10)
-                        Text("Profile").font(.footnote).padding(.bottom)
-                        Spacer()
+                            .padding(.top, 4)
+                        Text("Profile").font(.footnote).padding(.bottom, 4)
                     }.onTapGesture {
                         tabbarRouter.currentPage = .profile
                     }
                     
-                }.frame(width: geometry.size.width, height: geometry.size.height/8).background(Color.blue.shadow(radius: 2))
+                }.frame(width: geometry.size.width, height: 70).background(Color.gray.opacity(0.2))
             }
             
         }.navigationTitle("Loan Calculator").navigationBarTitleDisplayMode(.automatic).background(Color.white)
-        
     }
         
     @ViewBuilder var customeView: some View {

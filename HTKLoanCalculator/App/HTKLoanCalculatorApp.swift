@@ -12,12 +12,13 @@ struct HTKLoanCalculatorApp: App {
     let persistenceController = PersistenceController.shared
 
     var body: some Scene {
+//        WindowGroup {
+////            MainView(tabbarRouter: TabBarRouter())
+//            LoginView()
+//        }
+        
         WindowGroup {
-            //            ContentView()
-            //                .environment(\.managedObjectContext, persistenceController.container.viewContext)
-            //            MainView()
-//            MapSwiftUIView()
-            MainView(tabbarRouter: TabBarRouter())
+            LoginView()
         }
     }
 }
