@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		313099B82A5FA9E500B02B37 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313099B72A5FA9E500B02B37 /* Constant.swift */; };
+		314630862A6A3297003023C5 /* Hello_Image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 314630822A6A2868003023C5 /* Hello_Image.framework */; };
+		314630872A6A3297003023C5 /* Hello_Image.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 314630822A6A2868003023C5 /* Hello_Image.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		317C73D72A1C696D00734729 /* HTKLoanCalculatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317C73D62A1C696D00734729 /* HTKLoanCalculatorApp.swift */; };
 		317C73D92A1C696E00734729 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317C73D82A1C696E00734729 /* ContentView.swift */; };
 		317C73DB2A1C697D00734729 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 317C73DA2A1C697D00734729 /* Assets.xcassets */; };
@@ -18,7 +21,7 @@
 		317C73FA2A1C697F00734729 /* HTKLoanCalculatorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317C73F92A1C697F00734729 /* HTKLoanCalculatorUITestsLaunchTests.swift */; };
 		317C74082A1C6C2C00734729 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317C74072A1C6C2C00734729 /* MainView.swift */; };
 		317C740A2A1C949300734729 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317C74092A1C949300734729 /* DetailView.swift */; };
-		31BFA6902A43F951009DD72F /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BFA68F2A43F951009DD72F /* MainViewModel.swift */; };
+		31BFA6902A43F951009DD72F /* LoanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BFA68F2A43F951009DD72F /* LoanViewModel.swift */; };
 		31BFA6922A43FA15009DD72F /* LoanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BFA6912A43FA15009DD72F /* LoanView.swift */; };
 		31D3B6732A31912300FC4FF7 /* MapSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D3B6722A31912300FC4FF7 /* MapSwiftUIView.swift */; };
 		31D3B67B2A31BF9C00FC4FF7 /* vn_htk_watchappApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D3B67A2A31BF9C00FC4FF7 /* vn_htk_watchappApp.swift */; };
@@ -36,6 +39,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		314630812A6A2868003023C5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3146307C2A6A2867003023C5 /* Hello_Image.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 314630622A6A2866003023C5;
+			remoteInfo = Hello_Image;
+		};
+		314630832A6A2868003023C5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3146307C2A6A2867003023C5 /* Hello_Image.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3146306C2A6A2867003023C5;
+			remoteInfo = Hello_ImageTests;
+		};
 		317C73EA2A1C697E00734729 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 317C73CB2A1C696D00734729 /* Project object */;
@@ -52,7 +69,23 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		314630882A6A3297003023C5 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				314630872A6A3297003023C5 /* Hello_Image.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		313099B72A5FA9E500B02B37 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		3146307C2A6A2867003023C5 /* Hello_Image.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Hello_Image.xcodeproj; path = Hello_Image/Hello_Image.xcodeproj; sourceTree = "<group>"; };
 		317C73D32A1C696D00734729 /* HTKLoanCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HTKLoanCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		317C73D62A1C696D00734729 /* HTKLoanCalculatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTKLoanCalculatorApp.swift; sourceTree = "<group>"; };
 		317C73D82A1C696E00734729 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -68,7 +101,7 @@
 		317C73F92A1C697F00734729 /* HTKLoanCalculatorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTKLoanCalculatorUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		317C74072A1C6C2C00734729 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		317C74092A1C949300734729 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
-		31BFA68F2A43F951009DD72F /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		31BFA68F2A43F951009DD72F /* LoanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanViewModel.swift; sourceTree = "<group>"; };
 		31BFA6912A43FA15009DD72F /* LoanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanView.swift; sourceTree = "<group>"; };
 		31D3B6722A31912300FC4FF7 /* MapSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSwiftUIView.swift; sourceTree = "<group>"; };
 		31D3B6782A31BF9C00FC4FF7 /* vn.htk.watchapp Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "vn.htk.watchapp Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,6 +125,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				314630862A6A3297003023C5 /* Hello_Image.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,15 +153,77 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		313099B92A5FB28F00B02B37 /* Loan */ = {
+			isa = PBXGroup;
+			children = (
+				317C74092A1C949300734729 /* DetailView.swift */,
+				31BFA6912A43FA15009DD72F /* LoanView.swift */,
+				31F8C53E2A4950EE00D58181 /* PrincipalDetailView.swift */,
+			);
+			path = Loan;
+			sourceTree = "<group>";
+		};
+		313099BA2A5FB2BB00B02B37 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				31D3B6722A31912300FC4FF7 /* MapSwiftUIView.swift */,
+				31F8C5422A55104E00D58181 /* MapView.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		313099BB2A5FB2CB00B02B37 /* ImageProcess */ = {
+			isa = PBXGroup;
+			children = (
+				31F8C54A2A5512E300D58181 /* ImageProcessingView.swift */,
+				31F8C5442A55106800D58181 /* TodoView.swift */,
+			);
+			path = ImageProcess;
+			sourceTree = "<group>";
+		};
+		313099BC2A5FB31A00B02B37 /* VideoFav */ = {
+			isa = PBXGroup;
+			children = (
+				31F8C5462A55107F00D58181 /* VideoView.swift */,
+			);
+			path = VideoFav;
+			sourceTree = "<group>";
+		};
+		313099BD2A5FB32D00B02B37 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				31F8C5482A55108D00D58181 /* ProfileView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		3146307D2A6A2867003023C5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				314630822A6A2868003023C5 /* Hello_Image.framework */,
+				314630842A6A2868003023C5 /* Hello_ImageTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		314630852A6A3297003023C5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		317C73CA2A1C696D00734729 = {
 			isa = PBXGroup;
 			children = (
+				3146307C2A6A2867003023C5 /* Hello_Image.xcodeproj */,
 				31D3B6872A31D7EB00FC4FF7 /* MyPackage */,
 				317C73D52A1C696D00734729 /* HTKLoanCalculator */,
 				317C73EC2A1C697E00734729 /* HTKLoanCalculatorTests */,
 				317C73F62A1C697F00734729 /* HTKLoanCalculatorUITests */,
 				31D3B6792A31BF9C00FC4FF7 /* vn.htk.watchapp Watch App */,
 				317C73D42A1C696D00734729 /* Products */,
+				314630852A6A3297003023C5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -191,16 +287,11 @@
 		317C74062A1C6C0600734729 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				317C74072A1C6C2C00734729 /* MainView.swift */,
-				317C74092A1C949300734729 /* DetailView.swift */,
-				31D3B6722A31912300FC4FF7 /* MapSwiftUIView.swift */,
-				31BFA6912A43FA15009DD72F /* LoanView.swift */,
-				31F8C53E2A4950EE00D58181 /* PrincipalDetailView.swift */,
-				31F8C5422A55104E00D58181 /* MapView.swift */,
-				31F8C5442A55106800D58181 /* TodoView.swift */,
-				31F8C5462A55107F00D58181 /* VideoView.swift */,
-				31F8C5482A55108D00D58181 /* ProfileView.swift */,
-				31F8C54A2A5512E300D58181 /* ImageProcessingView.swift */,
+				313099BD2A5FB32D00B02B37 /* Profile */,
+				313099BC2A5FB31A00B02B37 /* VideoFav */,
+				313099BB2A5FB2CB00B02B37 /* ImageProcess */,
+				313099BA2A5FB2BB00B02B37 /* Map */,
+				313099B92A5FB28F00B02B37 /* Loan */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -208,6 +299,7 @@
 		31BFA68D2A43F8EF009DD72F /* App */ = {
 			isa = PBXGroup;
 			children = (
+				317C74072A1C6C2C00734729 /* MainView.swift */,
 				317C73D62A1C696D00734729 /* HTKLoanCalculatorApp.swift */,
 			);
 			path = App;
@@ -216,7 +308,7 @@
 		31BFA68E2A43F8F9009DD72F /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				31BFA68F2A43F951009DD72F /* MainViewModel.swift */,
+				31BFA68F2A43F951009DD72F /* LoanViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -289,6 +381,7 @@
 		31F8C5512A55150200D58181 /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				313099B72A5FA9E500B02B37 /* Constant.swift */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -303,6 +396,7 @@
 				317C73CF2A1C696D00734729 /* Sources */,
 				317C73D02A1C696D00734729 /* Frameworks */,
 				317C73D12A1C696D00734729 /* Resources */,
+				314630882A6A3297003023C5 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -403,6 +497,12 @@
 			mainGroup = 317C73CA2A1C696D00734729;
 			productRefGroup = 317C73D42A1C696D00734729 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 3146307D2A6A2867003023C5 /* Products */;
+					ProjectRef = 3146307C2A6A2867003023C5 /* Hello_Image.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				317C73D22A1C696D00734729 /* HTKLoanCalculator */,
@@ -412,6 +512,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		314630822A6A2868003023C5 /* Hello_Image.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Hello_Image.framework;
+			remoteRef = 314630812A6A2868003023C5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		314630842A6A2868003023C5 /* Hello_ImageTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = Hello_ImageTests.xctest;
+			remoteRef = 314630832A6A2868003023C5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		317C73D12A1C696D00734729 /* Resources */ = {
@@ -454,6 +571,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				317C73E02A1C697D00734729 /* Persistence.swift in Sources */,
+				313099B82A5FA9E500B02B37 /* Constant.swift in Sources */,
 				31F8C5432A55104E00D58181 /* MapView.swift in Sources */,
 				31F8C5452A55106800D58181 /* TodoView.swift in Sources */,
 				317C740A2A1C949300734729 /* DetailView.swift in Sources */,
@@ -467,7 +585,7 @@
 				317C73D92A1C696E00734729 /* ContentView.swift in Sources */,
 				317C74082A1C6C2C00734729 /* MainView.swift in Sources */,
 				317C73D72A1C696D00734729 /* HTKLoanCalculatorApp.swift in Sources */,
-				31BFA6902A43F951009DD72F /* MainViewModel.swift in Sources */,
+				31BFA6902A43F951009DD72F /* LoanViewModel.swift in Sources */,
 				31F8C54B2A5512E300D58181 /* ImageProcessingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,18 +8,17 @@
 import Foundation
 import Combine
 import SwiftUI
+import Hello_Image
 
-class MainViewModel: ObservableObject {
+class LoanViewModel: ObservableObject {
     @Published var loanAmount: String = ""
     @Published var loanTerm: String = ""
     @Published var interestRate: String = ""
-    @Published var interestType: Int = 100
+    @Published var interestType: Int = 0
     @Published var var1: String = ""
     
     @Published var __loanAmount: Int = 0
-    @Published var __percentage: Double = 0.0
-    @Published var __totalPaid: Double = 0
-    @Published var __monthlyPaid: Double = 0
+
     
     @Published var textDescriptionMethod: NSMutableAttributedString = NSMutableAttributedString(string: Constants.flatRateText, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 23, weight: .bold)])
     
@@ -31,30 +30,30 @@ class MainViewModel: ObservableObject {
     var isValidateLoan = CurrentValueSubject<Bool, Never>(false)
     var isValidateTerm = CurrentValueSubject<Bool, Never>(false) //(Int(self.loanTerm) ?? 0) > 0
     var isValidateIRate = CurrentValueSubject<Bool, Never>(false) //(Int(self.interestRate) ?? 0) > 0
-    var isValidateIType = CurrentValueSubject<Bool, Never>(false) //(Int(self.interestType) ?? 0) > 0
+//    var isValidateIType = CurrentValueSubject<Bool, Never>(false) //(Int(self.interestType) ?? 0) > 0
     
-    @Published var showCircleView: Bool = false
+//    @Published var showCircleView: Bool = false
     
     // Output
-    @Published var mortgagePayments: Double = 0
+    @Published var totalPayment: Double = 0
+    @Published var totalInterest: Double = 0
+    @Published var monthlyPaid: Double = 0
+    @Published var percentage: Double = 0
     
      public init() {
          /// Validate loan amount
+         
+         IPFactory.saySomething()
+         
          self.$loanAmount.sink { val in
              self.isValidateLoan.send((Int(val) ?? 0) > 0)
-             
-             print("Value change \(val) \(self.isValidateLoan) ", val.count)
          }.store(in: &cancelable)
          
          self.$loanTerm.sink { val in
-             
-             print("Value change \(val) \(self.isValidateTerm)")
              self.isValidateTerm.send((Int(val) ?? 0) > 0)
          }.store(in: &cancelable)
          
          self.$interestRate.sink { val in
-//             self.isValidateIRate = val.count > 0
-             print("Value change \(val) \(self.isValidateIRate)")
              self.isValidateIRate.send((Int(val) ?? 0) > 0)
          }.store(in: &cancelable)
          
@@ -70,9 +69,9 @@ class MainViewModel: ObservableObject {
                  case 0:
                      self.loanAmount += "000"
                  case 1:
-                     self.loanAmount += "000.000"
+                     self.loanAmount += "000000"
                  case 2:
-                     self.loanAmount += "000.000.000"
+                     self.loanAmount += "000000000"
                  case 3:
                      self.loanAmount.removeAll()
                  default:
@@ -82,19 +81,68 @@ class MainViewModel: ObservableObject {
              
          }.store(in: &cancelable)
 
-         
-         
          self.isValidateLoan.sink { __value in
-             print("check subject ", __value)
+             print("check subject isValidateLoan", __value)
          }.store(in: &cancelable)
-//         if (isValidateLoan && isValidateTerm && isValidateIRate && isValidateIType) {
-             print("debuggggggggg")
-             self.showCircleView = true
-             
-             Publishers.CombineLatest(self.$termSelect, Publishers.CombineLatest4(self.$loanAmount, self.$loanTerm, self.$interestRate, self.$interestType)).sink { tuplesData in
-                 print("debuging ...")
-                 print(tuplesData.0, tuplesData.1, tuplesData.1.0, tuplesData.1.1, tuplesData.1.2)
-             }.store(in: &cancelable)
+         
+         
+         /// done validate all values
+         print("xxxx")
+         print(self.isValidateLoan.value)
+         print(self.isValidateTerm.value)
+         print(self.isValidateIRate.value)
+         
+         
+         
+//         if (self.isValidateLoan.value && self.isValidateTerm.value && self.isValidateIRate.value) {
+//         Publishers.CombineLatest
+         let __publisher = Publishers.CombineLatest(self.$termSelect, self.$loanAmount)
+//         Publishers.CombineLatest(__publisher, Publishers.CombineLatest3(self.$loanTerm, self.$interestRate, self.$interestType)).sink { tuplesData in
+//             print("CombineLatest debuging ...")
+////             print(tuplesData.0, tuplesData.1, tuplesData.2.0, tuplesData.2.1, tuplesData.2.2)
+//
+//             /*
+//              named to clearly
+//              validate all fields -> return
+//              check interest type flat or reduce
+//              caculate and binding to circle ring, text
+//
+//              */
+//             let termSelected = tuplesData.0.0
+//             let loanAmount = tuplesData.0.1
+//             let loanTerm = tuplesData.1.0
+//             let interestRate = tuplesData.1.1
+//             let interestType = tuplesData.1.2
+//
+////             if (!(loanAmount.count > 0 && loanTerm.count > 0 && interestRate.count > 0)) {
+////                 return
+////             }
+//
+//             if (interestType == 0) { // Flat method
+//                 print("hello flat")
+//                 /*
+//                  check selected month or year
+//                  */
+//                 var timeLoan: Int = 0
+//
+//                 if (termSelected == 0) { // year duration
+//                     timeLoan = Int(loanTerm)! * 12
+//
+//                 } else {
+//                     timeLoan = Int(loanTerm)!
+//                 }
+//
+//                 self.totalPayment = Double(loanAmount)! * Double(interestRate)! * pow((1 + Double(interestRate)!), Double(timeLoan)) / (pow((1 + Double(interestRate)!), Double(timeLoan)) - 1)
+//                 self.totalInterest = self.totalPayment - Double(loanAmount)!
+//                 self.monthlyPaid = self.totalPayment / timeLoan
+//                 self.percentage = (Double(loanAmount)! / self.totalPayment) * 100
+//             } else {
+//                 print("hello reduce")
+//             }
+//
+//         }.store(in: &cancelable)
+//         }
+         
              
              /*
              Publishers.CombineLatest4(self.$loanAmount, self.$loanTerm, self.$interestRate, self.$interestType).sink { tuples in

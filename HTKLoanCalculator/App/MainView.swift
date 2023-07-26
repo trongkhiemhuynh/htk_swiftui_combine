@@ -10,12 +10,6 @@ import SwiftUI
 struct MainView: View {
     
     var body: some View {
-        
-        //        NavigationView {
-        //                HStack {
-        //                    TestView()
-        //                    TestView()
-        //                }.background(Color.blue).edgesIgnoringSafeArea(.bottom)
         GeometryReader { geometry in
             VStack {
                 Spacer()
@@ -84,12 +78,12 @@ struct MainView: View {
         switch tabbarRouter.currentPage {
         case .home:
             NavigationView {
-                LoanView(viewModel: MainViewModel())
+                LoanView(viewModel: LoanViewModel())
             }
         case .map:
             MapView().background(Color.purple)
         case .plus:
-            TodoView().background(.pink)
+            ImageProcessingView()
         case .videos:
             VideoView().background(.green)
         case .profile:
@@ -106,6 +100,7 @@ struct MainView_Previews: PreviewProvider {
     }
 }
 
+/// TestView
 struct TestView: View {
     @State var count: Int = 0
     
@@ -125,7 +120,7 @@ struct TestView: View {
             Button (action: {
                 
             }) {
-                Image(systemName: "arrowtriangle.down.fill").resizable().frame(width: 50, height: 50)
+                Image(systemName: "info.square.fill").resizable().frame(width: 50, height: 50)
             }
         }
 

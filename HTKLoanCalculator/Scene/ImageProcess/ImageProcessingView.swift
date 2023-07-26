@@ -9,7 +9,11 @@ import SwiftUI
 
 struct ImageProcessingView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            
+            Text("Hello, World!").background(Color(.red)).padding().background(Color(.green)).padding().background(Color(.blue))
+        }
+        
     }
 }
 
