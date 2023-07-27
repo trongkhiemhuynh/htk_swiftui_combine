@@ -18,7 +18,7 @@ struct CircularProgressView: View {
                 .overlay(
                     ZStack {
                         Circle().stroke(Color.pink.opacity(0.5), lineWidth: 10).background(Color.clear)
-                        Circle().trim(from: 0, to: viewModel.percentage / 100).stroke(Color.pink, style: StrokeStyle(lineWidth: 10, lineCap: .round)).rotationEffect(.degrees(-90))
+                        Circle().trim(from: 0, to: viewModel.percentage).stroke(Color.pink, style: StrokeStyle(lineWidth: 10, lineCap: .round)).rotationEffect(.degrees(-90))
                     }
                 )
         }
@@ -36,7 +36,8 @@ struct CircularProgressView: View {
 
 class CircularProgressViewModel: ObservableObject {
                                 
-    @Published var percentage: Double
+    var percentage: Double
+    
     init(percentage: Double) {
         self.percentage = percentage
     }

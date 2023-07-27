@@ -30,6 +30,7 @@ struct LoanView: View {
 //                        .background(Color.yellow)
                     
                     VStack(alignment: .leading) {
+                        
                         Text("Paid off").font(.caption).padding(4).foregroundColor(Color.white).background(Color.blue).cornerRadius(4)
                         Text("\(self.viewModel.totalPayment) $").font(.body)
                         Text("Total interest").font(.caption).padding(4).foregroundColor(Color.white).background(Color.blue).cornerRadius(4)
@@ -75,13 +76,13 @@ struct LoanView: View {
                     Text("Loan term").font(.headline)
                     
                     HStack {
-                        TextField("Input term", text:  $viewModel.loanTerm, onEditingChanged: { _ in
+                        TextField("Input term", text:  self.$viewModel.loanTerm, onEditingChanged: { _ in
                             print("$0onEditingChanged")
                         }, onCommit: {
                             print("onCommit")
                         }).textFieldStyle(.roundedBorder).keyboardType(.numberPad)
                         
-                        Picker("What is your term?", selection: self.$viewModel.termSelect) {
+                        Picker("What is your term?", selection: self.$viewModel.loanTermType) {
                             Text("years").tag(0)
                             Text("months").tag(1)
                         }.pickerStyle(.segmented)
@@ -119,11 +120,11 @@ struct LoanView: View {
                         } label: {
                             Image(systemName: "info.square.fill")
                         }.sheet(isPresented: $presentingModal) {
-                            NavigationLink(destination: DetailView()) {
+//                            NavigationLink(destination: DetailView()) {
                                 TextView(text: self.$viewModel.textDescriptionMethod).frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity).font(.custom(
                                     "AmericanTypewriter",
-                                    fixedSize: 33))
-                            }.navigationBarTitle("Description method")
+                                    fixedSize: 13))
+//                            }.navigationBarTitle("Description method")
                         }
                         
                     }
@@ -150,20 +151,4 @@ struct LoanView: View {
             }.navigationTitle("Calculator Machine").background(Color.white)
         }
     }
-}
-
-struct TextView: UIViewRepresentable {
-    @Binding var text: NSMutableAttributedString
-    
-    func makeUIView(context: Context) -> UITextView {
-        UITextView()
-    }
-    
-    func updateUIView(_ uiView: UITextView, context: Context) {
-        
-        uiView.attributedText = text
-    }
-    
-    typealias UIViewType = UITextView
-
 }

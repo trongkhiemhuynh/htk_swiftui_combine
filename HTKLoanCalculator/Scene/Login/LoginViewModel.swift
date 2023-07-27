@@ -37,9 +37,9 @@ class LoginViewModel: ObservableObject {
     }
     
     private func someAsyncronousTask(completion: @escaping (Bool) -> Void) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             // Waited 3 seconds to simulate something like URLSession request
-            let checked = self.tfUsername == "dragon" && self.tfPassword == "abc123456"
+            let checked = true//self.tfUsername == "dragon" && self.tfPassword == "abc123456"
             completion(checked)
         }
     }
