@@ -7,21 +7,25 @@
 
 import SwiftUI
 
+///
+///Month, Principle, Interest, Payment
+///
+
 struct PrincipalDetailView: View {
 
     let _data: [PricipalItem] =  {
         var items = [PricipalItem]()
-        let item1 = PricipalItem(orderItem: 1, paymentMoney: 0, titleOrder: "STT", titlePayment: "PRINCIPLE")
-        items.append(item1)
-        
-        let data = (1...1000).map { element in
-            PricipalItem(orderItem: element, paymentMoney: 1410.90)
+
+        let data = (1...100).map { element in
+            PricipalItem(order: element, principal: "principal", interest: "interest", payment: "payment")
         }
-        
+
         items.append(contentsOf: data)
-        
+
         return items
     }()
+    
+    var datas: [PricipalItem]
     
     let columns = [
         GridItem(.flexible())
@@ -29,35 +33,49 @@ struct PrincipalDetailView: View {
     
     var body: some View {
         ScrollView {
-            
-            LazyVGrid(columns: columns, spacing: 20) {
-                ForEach(_data, id: \.id) { item in
-                    HStack {
-                        if (!item.titleOrder.isEmpty) {
-                            Text("\(item.titleOrder)").frame(maxWidth: .infinity, alignment: .leading).background(Color.red)
-                            Text("\(item.titlePayment)").frame(maxWidth: .infinity, alignment: .leading).background(Color.blue)
-                        } else {
-                            Text("\(item.orderItem)").frame(maxWidth: .infinity, alignment: .leading).background(Color.red)
-                            Text("\(item.paymentMoney)").frame(maxWidth: .infinity, alignment: .leading).background(Color.blue)
+            Section {
+                LazyVGrid(columns: columns, spacing: 10) {
+                    ForEach(datas, id: \.id) { item in
+                        HStack {
+                            Text("\(item.order)").frame(maxWidth: .infinity, alignment: .leading).background(Color.red)
+                            Text("\(item.principal)").frame(maxWidth: .infinity, alignment: .leading).background(Color.blue)
+                            
+                            Text("\(item.interest)").frame(maxWidth: .infinity, alignment: .leading).background(Color.blue)
+                            
+                            Text("\(item.payment)").frame(maxWidth: .infinity, alignment: .leading).background(Color.blue)
                         }
-                        
                     }
                 }
+            } header: {
+                HStack(alignment: .top) {
+                    Text("Month")
+                    Spacer()
+                    Text("Principle")
+                    Spacer()
+                    Text("Interest")
+                    Spacer()
+                    Text("Payment")
+                    Spacer()
+                }
+            } footer: {
+                Text(String("Aug28"))
             }
+            
+            
         }//.frame(maxHeight: .infinity)
     }
 }
 
 struct PrincipalDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        PrincipalDetailView()
+        PrincipalDetailView(datas: [])
     }
 }
 
 struct PricipalItem: Identifiable {
-    var id = UUID()
-    var orderItem: Int
-    var paymentMoney: Double
-    var titleOrder: String = ""
-    var titlePayment: String = ""
+    let id = UUID()
+    let order: Int
+    let principal: String
+    let interest: String
+    let payment: String
 }

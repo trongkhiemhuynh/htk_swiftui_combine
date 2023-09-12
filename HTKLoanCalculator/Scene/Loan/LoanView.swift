@@ -82,7 +82,7 @@ struct LoanView: View {
                             print("onCommit")
                         }).textFieldStyle(.roundedBorder).keyboardType(.numberPad)
                         
-                        Picker("What is your term?", selection: self.$viewModel.loanTermType) {
+                        Picker("What is your term?", selection: self.$viewModel.yearMonthTimeType) {
                             Text("years").tag(0)
                             Text("months").tag(1)
                         }.pickerStyle(.segmented)
@@ -129,7 +129,7 @@ struct LoanView: View {
                         
                     }
                     
-                    Picker("What is your term type", selection: self.$viewModel.interestType) {
+                    Picker("What is your term type", selection: self.$viewModel.FlatReduceInterestType) {
                         Text("Flat rate method").tag(0)
                         Text("Reduce balance method").tag(1)
                     }.pickerStyle(.segmented)
@@ -142,7 +142,7 @@ struct LoanView: View {
                 ///Button
                 ///
                 VStack(alignment: .center) {
-                    NavigationLink(destination: PrincipalDetailView()) {
+                    NavigationLink(destination: PrincipalDetailView(datas: self.viewModel.datas)) {
                         Text("Result").frame(width: 300, height: 55).font(.headline).background(Color.red).cornerRadius(10.0).foregroundColor(Color.white)
                     }
                     

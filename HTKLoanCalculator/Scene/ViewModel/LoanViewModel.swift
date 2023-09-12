@@ -13,12 +13,9 @@ import Hello_Image
 class LoanViewModel: ObservableObject {
     @Published var loanAmount: String = ""
     @Published var loanTerm: String = ""
-    @Published var loanTermType: Int = 0
+    @Published var yearMonthTimeType: Int = 0
     @Published var interestRate: String = ""
-    @Published var interestType: Int = 0
-    
-    
-    @Published var __loanAmount: Int = 0
+    @Published var FlatReduceInterestType: Int = 0
 
     
     @Published var textDescriptionMethod: NSMutableAttributedString = NSMutableAttributedString(string: Constants.flatRateText, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 23, weight: .bold)])
@@ -27,92 +24,110 @@ class LoanViewModel: ObservableObject {
     
     var cancelable: Set<AnyCancellable> = []
     
-    var isValidateLoan = CurrentValueSubject<Bool, Never>(false)
-    var isValidateTerm = CurrentValueSubject<Bool, Never>(false) //(Int(self.loanTerm) ?? 0) > 0
-    var isValidateIRate = CurrentValueSubject<Bool, Never>(false) //(Int(self.interestRate) ?? 0) > 0
+//    var isValidateLoan = CurrentValueSubject<Bool, Never>(false)
+//    var isValidateTerm = CurrentValueSubject<Bool, Never>(false) //(Int(self.loanTerm) ?? 0) > 0
+//    var isValidateIRate = CurrentValueSubject<Bool, Never>(false) //(Int(self.interestRate) ?? 0) > 0
 //    var isValidateIType = CurrentValueSubject<Bool, Never>(false) //(Int(self.interestType) ?? 0) > 0
     
 //    @Published var showCircleView: Bool = false
     
     // Output
-    var totalPayment: Double = 0//PassthroughSubject<Double, Never>()
-    var totalInterest: Double = 0 //PassthroughSubject<Double, Never>()
-    var monthlyPaid: Double = 0
-    var percentage: Double = 0.5
+    @Published var totalPayment: String = "" //PassthroughSubject<Double, Never>()
+    @Published var totalInterest: String = "" //PassthroughSubject<Double, Never>()
+    @Published var monthlyPaid: String = ""
+    @Published var percentage: Double = 0.5
+    
+    lazy var datas: Array<PricipalItem> = Array<PricipalItem>()
     
      public init() {
          /// Validate loan amount
-         
-         IPFactory.saySomething()
-         
-         self.$loanAmount.sink { val in
-             self.isValidateLoan.send((Int(val) ?? 0) > 0)
-         }.store(in: &cancelable)
-         
-         self.$loanTerm.sink { val in
-             self.isValidateTerm.send((Int(val) ?? 0) > 0)
-         }.store(in: &cancelable)
-         
-         self.$interestRate.sink { val in
-             self.isValidateIRate.send((Int(val) ?? 0) > 0)
-         }.store(in: &cancelable)
+//         self.$loanAmount.sink { val in
+//             self.isValidateLoan.send((Int(val) ?? 0) > 0)
+//         }.store(in: &cancelable)
+//
+//         self.$loanTerm.sink { val in
+//             self.isValidateTerm.send((Int(val) ?? 0) > 0)
+//         }.store(in: &cancelable)
+//
+//         self.$interestRate.sink { val in
+//             self.isValidateIRate.send((Int(val) ?? 0) > 0)
+//         }.store(in: &cancelable)
          
          
-         self.$shortInputMoneySegment.sink { completion in
-             print("completion input shortcut", completion)
-         } receiveValue: { value in
-             print("hello short cut")
-             print(value)
-             
-             if (self.loanAmount.count > 0) {
-                 switch value {
-                 case 0:
-                     self.loanAmount += "000"
-                 case 1:
-                     self.loanAmount += "000000"
-                 case 2:
-                     self.loanAmount += "000000000"
-                 case 3:
-                     self.loanAmount.removeAll()
-                 default:
-                     self.loanAmount.removeAll()
-                 }
-             }
-             
-         }.store(in: &cancelable)
+//         self.$shortInputMoneySegment.sink { completion in
+//             print("completion input shortcut", completion)
+//         } receiveValue: { value in
+//             print("hello short cut")
+//             print(value)
+//
+//             if (self.loanAmount.count > 0) {
+//                 switch value {
+//                 case 0:
+//                     self.loanAmount += "000"
+//                 case 1:
+//                     self.loanAmount += "000000"
+//                 case 2:
+//                     self.loanAmount += "000000000"
+//                 case 3:
+//                     self.loanAmount.removeAll()
+//                 default:
+//                     self.loanAmount.removeAll()
+//                 }
+//             }
+//
+//         }.store(in: &cancelable)
 
-         self.isValidateLoan.sink { __value in
-             print("check subject isValidateLoan", __value)
-         }.store(in: &cancelable)
+//         self.isValidateLoan.sink { __value in
+//             print("check subject isValidateLoan", __value)
+//         }.store(in: &cancelable)T
+//         Publishers.CombineLatest(self.$interestRate, self.$loanAmount).sink { outputResult in
+//             self.totalPayment =
+//         }.store(in: &cancelable)
          
-         
-         let combine2 = Publishers.CombineLatest(self.$loanAmount, self.$loanTerm)
-         Publishers.CombineLatest4(self.$interestRate, self.$interestType, self.$loanTermType, combine2).sink { output in
+         Publishers.CombineLatest4(self.$interestRate, self.$loanAmount, self.$loanTerm , self.$FlatReduceInterestType.combineLatest(self.$yearMonthTimeType)).sink { output in
              debugPrint("output")
              debugPrint(output)
+             self.datas.removeAll()
              
-             guard output.0.count > 0, output.3.0.count > 0, output.3.1.count > 0 else {return}
+             guard output.0.count > 0, output.1.count > 0, output.2.count > 0 else {return}
              
-             var durationLoan = 0
+             guard let rateLoan = Double(output.0), let amountLoan = Double(output.1), var tenure = Double(output.2) else {return}
              
-             if (output.2 == 0) {
+             let flatReduceType = output.3.0
+             let yearorMonthType = output.3.1
+             
+             if (yearorMonthType == 1) {
                  // year duration
-                 durationLoan = Int(output.3.1)! * 12
-             } else {
-                 // month duration
-                 durationLoan = Int(output.3.1)!
+                 tenure = tenure / 12
              }
              
-             if (output.1 == 0) {
-                 // Flat method output.1
-//                 self.totalPayment = Double(output.3.0)! * Double(output.0)! * pow((1 + Double(output.0)!), Double(durationLoan)) / (pow((1 + Double(output.0)!), Double(durationLoan)) - 1)
-//
-//                 self.totalInterest = Double(self.totalPayment)! - Double(output.3.0)!
-//                 self.monthlyPaid = Double(self.totalPayment) / durationLoan
-//                 self.percentage = (Double(output.3.0)! / Double(self.totalPayment))
-             } else {
-                 // Others
+             if (flatReduceType == 0) {
+                 //TODO: Flat method output.1
+                 let partition = (Double(amountLoan)*Double(rateLoan)*(tenure))
+                 let partition1 = (Double(amountLoan) + partition/100)
+                 let monthCount = (tenure*12)
+                 
+                 self.totalPayment = partition1.formattter()
 
+                 self.totalInterest = (partition/100).formattter()
+                 
+                 self.monthlyPaid = (partition1/monthCount).formattter()
+
+                 self.percentage = (partition1 - amountLoan)/amountLoan
+                 
+                 /// loop all months
+                 var __totalPayment = partition1
+                 let _interestOnceMonth = (partition1)/monthCount
+                 let strInterestMonth = _interestOnceMonth.formattter()
+                 
+                 for m in 1...Int(monthCount) {
+                     self.datas.append(PricipalItem(order: (m), principal: __totalPayment.formattter(), interest: strInterestMonth, payment: self.monthlyPaid))
+                     __totalPayment -= _interestOnceMonth
+                 }
+             } else {
+                 // Reduce method balance
+                 
+                 
              }
              
          }.store(in: &cancelable)

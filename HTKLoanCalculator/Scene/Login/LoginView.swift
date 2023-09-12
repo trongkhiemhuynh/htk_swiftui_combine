@@ -16,28 +16,28 @@ struct LoginView: View {
             NavigationView {
                 VStack(alignment: .center, spacing: 23) {
                     Text("Hello, \(viewModel.tfUsername)")
-                    
                     Image(systemName: "number.circle.fill")
+                    
                     TextField("username", text: self.$viewModel.tfUsername) {
                         print("endediting")
                         UIApplication.shared.endEditing()
                     }.textFieldStyle(.roundedBorder).padding([.leading, .trailing])
-//                    TextField("username", text: self.$viewModel.tfUsername).textFieldStyle(.roundedBorder).padding([.leading, .trailing])
                     
                     SecureField("password", text: self.$viewModel.tfPassword) {
                         UIApplication.shared.endEditing()
                         print("endediting123")
                     }.textFieldStyle(.roundedBorder).padding([.leading, .trailing])
-                    
-//                    NavigationLink(destination: MainView(tabbarRouter: TabBarRouter()), isActive: self.$viewModel.isResolve, label: {
-                        Button("LOGIN") {
+
+                    Text("LOGIN")
+                        .foregroundColor(Color.white)
+                        .frame(width: 200, height: 50)
+                        .padding()
+                        .background(Color.black)
+                        .shadow(radius: 23).onTapGesture {
                             self.viewModel.onRequestLogin()
                         }.fullScreenCover(isPresented: self.$viewModel.isResolve) {
                             MainView(tabbarRouter: TabBarRouter())
                         }
-                        
-//                    })
-                    
                     Spacer()
                     
                 }.background(Color.red)

@@ -10,6 +10,9 @@
 		313099B82A5FA9E500B02B37 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313099B72A5FA9E500B02B37 /* Constant.swift */; };
 		314630862A6A3297003023C5 /* Hello_Image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 314630822A6A2868003023C5 /* Hello_Image.framework */; };
 		314630872A6A3297003023C5 /* Hello_Image.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 314630822A6A2868003023C5 /* Hello_Image.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		314AB16A2A9F1F2E00AF58C8 /* testjson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314AB1692A9F1F2E00AF58C8 /* testjson.swift */; };
+		3163656E2A987ECE0044D044 /* TestContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3163656D2A987ECE0044D044 /* TestContentView.swift */; };
+		316365702A98A0870044D044 /* TestSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3163656F2A98A0870044D044 /* TestSwift.swift */; };
 		317C73D72A1C696D00734729 /* HTKLoanCalculatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317C73D62A1C696D00734729 /* HTKLoanCalculatorApp.swift */; };
 		317C73D92A1C696E00734729 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317C73D82A1C696E00734729 /* ContentView.swift */; };
 		317C73DB2A1C697D00734729 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 317C73DA2A1C697D00734729 /* Assets.xcassets */; };
@@ -34,6 +37,7 @@
 		31D3B67D2A31BF9D00FC4FF7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D3B67C2A31BF9D00FC4FF7 /* ContentView.swift */; };
 		31D3B67F2A31BFA200FC4FF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31D3B67E2A31BFA200FC4FF7 /* Assets.xcassets */; };
 		31D3B6822A31BFA200FC4FF7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31D3B6812A31BFA200FC4FF7 /* Preview Assets.xcassets */; };
+		31F633CF2A9753BE00DCDFB1 /* MainViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F633CE2A9753BE00DCDFB1 /* MainViewModelTests.swift */; };
 		31F8C53D2A494E5200D58181 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F8C53C2A494E5200D58181 /* Constants.swift */; };
 		31F8C53F2A4950EE00D58181 /* PrincipalDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F8C53E2A4950EE00D58181 /* PrincipalDetailView.swift */; };
 		31F8C5412A4EB58600D58181 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F8C5402A4EB58600D58181 /* ContentViewModel.swift */; };
@@ -92,6 +96,10 @@
 /* Begin PBXFileReference section */
 		313099B72A5FA9E500B02B37 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		3146307C2A6A2867003023C5 /* Hello_Image.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Hello_Image.xcodeproj; path = Hello_Image/Hello_Image.xcodeproj; sourceTree = "<group>"; };
+		314AB1662A9F1EFB00AF58C8 /* testJson.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = testJson.md; sourceTree = "<group>"; };
+		314AB1692A9F1F2E00AF58C8 /* testjson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testjson.swift; sourceTree = "<group>"; };
+		3163656D2A987ECE0044D044 /* TestContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestContentView.swift; sourceTree = "<group>"; };
+		3163656F2A98A0870044D044 /* TestSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSwift.swift; sourceTree = "<group>"; };
 		317C73D32A1C696D00734729 /* HTKLoanCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HTKLoanCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		317C73D62A1C696D00734729 /* HTKLoanCalculatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTKLoanCalculatorApp.swift; sourceTree = "<group>"; };
 		317C73D82A1C696E00734729 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -122,6 +130,7 @@
 		31D3B67E2A31BFA200FC4FF7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		31D3B6812A31BFA200FC4FF7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		31D3B6872A31D7EB00FC4FF7 /* MyPackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = MyPackage; sourceTree = "<group>"; };
+		31F633CE2A9753BE00DCDFB1 /* MainViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModelTests.swift; sourceTree = "<group>"; };
 		31F8C53C2A494E5200D58181 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		31F8C53E2A4950EE00D58181 /* PrincipalDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrincipalDetailView.swift; sourceTree = "<group>"; };
 		31F8C5402A4EB58600D58181 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
@@ -226,6 +235,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		314AB16B2A9F23BE00AF58C8 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				31BFA68F2A43F951009DD72F /* LoanViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		3163656A2A987EA20044D044 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				3163656D2A987ECE0044D044 /* TestContentView.swift */,
+				3163656F2A98A0870044D044 /* TestSwift.swift */,
+			);
+			path = Test;
+			sourceTree = "<group>";
+		};
 		317C73CA2A1C696D00734729 = {
 			isa = PBXGroup;
 			children = (
@@ -254,12 +280,12 @@
 		317C73D52A1C696D00734729 /* HTKLoanCalculator */ = {
 			isa = PBXGroup;
 			children = (
+				3163656A2A987EA20044D044 /* Test */,
 				31F8C5512A55150200D58181 /* Config */,
 				31F8C5502A5514F300D58181 /* Support */,
 				31F8C54F2A5514AB00D58181 /* Data */,
 				31F8C54C2A55143600D58181 /* Domain */,
 				31F8C53B2A494E2E00D58181 /* Resources */,
-				31BFA68E2A43F8F9009DD72F /* ViewModel */,
 				31BFA68D2A43F8EF009DD72F /* App */,
 				317C74062A1C6C0600734729 /* Scene */,
 				317C73D82A1C696E00734729 /* ContentView.swift */,
@@ -284,6 +310,7 @@
 			isa = PBXGroup;
 			children = (
 				317C73ED2A1C697F00734729 /* HTKLoanCalculatorTests.swift */,
+				31F633CE2A9753BE00DCDFB1 /* MainViewModelTests.swift */,
 			);
 			path = HTKLoanCalculatorTests;
 			sourceTree = "<group>";
@@ -300,6 +327,7 @@
 		317C74062A1C6C0600734729 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				314AB16B2A9F23BE00AF58C8 /* ViewModel */,
 				31BE70302A70D60C0068AE25 /* Login */,
 				313099BD2A5FB32D00B02B37 /* Profile */,
 				313099BC2A5FB31A00B02B37 /* VideoFav */,
@@ -327,14 +355,6 @@
 				317C73D62A1C696D00734729 /* HTKLoanCalculatorApp.swift */,
 			);
 			path = App;
-			sourceTree = "<group>";
-		};
-		31BFA68E2A43F8F9009DD72F /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				31BFA68F2A43F951009DD72F /* LoanViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		31D3B6792A31BF9C00FC4FF7 /* vn.htk.watchapp Watch App */ = {
@@ -391,6 +411,8 @@
 		31F8C54F2A5514AB00D58181 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				314AB1662A9F1EFB00AF58C8 /* testJson.md */,
+				314AB1692A9F1F2E00AF58C8 /* testjson.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -597,6 +619,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				317C73E02A1C697D00734729 /* Persistence.swift in Sources */,
+				316365702A98A0870044D044 /* TestSwift.swift in Sources */,
 				313099B82A5FA9E500B02B37 /* Constant.swift in Sources */,
 				31F8C5432A55104E00D58181 /* MapView.swift in Sources */,
 				31F8C5452A55106800D58181 /* TodoView.swift in Sources */,
@@ -610,9 +633,11 @@
 				31BE70342A70D6480068AE25 /* LoginViewModel.swift in Sources */,
 				31F8C5492A55108D00D58181 /* ProfileView.swift in Sources */,
 				31F8C53D2A494E5200D58181 /* Constants.swift in Sources */,
+				3163656E2A987ECE0044D044 /* TestContentView.swift in Sources */,
 				31BE702F2A70CDAE0068AE25 /* CircularProgressView.swift in Sources */,
 				31F8C5472A55107F00D58181 /* VideoView.swift in Sources */,
 				31F8C53F2A4950EE00D58181 /* PrincipalDetailView.swift in Sources */,
+				314AB16A2A9F1F2E00AF58C8 /* testjson.swift in Sources */,
 				317C73D92A1C696E00734729 /* ContentView.swift in Sources */,
 				317C74082A1C6C2C00734729 /* MainView.swift in Sources */,
 				317C73D72A1C696D00734729 /* HTKLoanCalculatorApp.swift in Sources */,
@@ -627,6 +652,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				317C73EE2A1C697F00734729 /* HTKLoanCalculatorTests.swift in Sources */,
+				31F633CF2A9753BE00DCDFB1 /* MainViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -789,7 +815,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"HTKLoanCalculator/Preview Content\"";
-				DEVELOPMENT_TEAM = C7BCM69H7A;
+				DEVELOPMENT_TEAM = 4564UD9689;
 				ENABLE_PREVIEWS = YES;
 				EXCLUDED_ARCHS = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -803,7 +829,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = vn.htk.sample.HTKApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -821,7 +847,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"HTKLoanCalculator/Preview Content\"";
-				DEVELOPMENT_TEAM = C7BCM69H7A;
+				DEVELOPMENT_TEAM = 4564UD9689;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "HTK App";
@@ -834,7 +860,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = vn.htk.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -920,10 +946,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"vn.htk.watchapp Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 4564UD9689;
 				ENABLE_PREVIEWS = YES;
 				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
@@ -952,10 +979,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"vn.htk.watchapp Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 4564UD9689;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = vn.htk.watchapp;
